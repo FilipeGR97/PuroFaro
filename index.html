@@ -1,0 +1,65 @@
+<!doctype html>
+<html>   
+<head><meta charset="utf-8">
+<title>Puro Faro</title>
+<link rel="stylesheet" href="styles.css">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-3.5.1.min"></script>
+<script type="text/javascript" src="js/bootstrap.min.js.js"></script>
+</head>
+
+<body background="img/purofaro.jpg">
+	<!--Importando Script Jquery-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<p>Puro Faro</p>
+	<!--Formulário-->
+	<div style='text-align:center'>
+	<form>
+		<label for="cep">CEP</label>
+		<input id="cep" type="text" required/>
+		
+		</select>
+	</form>
+	
+	<script type="text/javascript">
+		$("#cep").focusout(function(){
+			//Início do Comando AJAX
+			$.ajax({
+				//O campo URL diz o caminho de onde virá os dados
+				//É importante concatenar o valor digitado no CEP
+				url: 'https://viacep.com.br/ws/'+$(this).val()+'/json/unicode/',
+				//Aqui você deve preencher o tipo de dados que será lido,
+				//no caso, estamos lendo JSON.
+				dataType: 'json',
+				//SUCESS é referente a função que será executada caso
+				//ele consiga ler a fonte de dados com sucesso.
+				//O parâmetro dentro da função se refere ao nome da variável
+				//que você vai dar para ler esse objeto.
+				success: function(resposta){
+					//Agora basta definir os valores que você deseja preencher
+					//automaticamente nos campos acima.
+					$("#logradouro").val(resposta.logradouro);
+					$("#complemento").val(resposta.complemento);
+					$("#bairro").val(resposta.bairro);
+					$("#cidade").val(resposta.localidade);
+					$("#uf").val(resposta.uf);
+					//Vamos incluir para que o Número seja focado automaticamente
+					//melhorando a experiência do usuário
+					$("#numero").focus();
+				}
+			});
+		});
+	</script>
+	<form>
+		<div id="botao">	
+		   <input type="submit" name="botao" value="Localizar" class="botaoEnviar" />
+		</div>
+	 </form>
+	<style>
+  body {
+	  color: rgb(255, 255, 255);
+  }
+	</style>
+	</div>
+</body>
+</html>
