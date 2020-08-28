@@ -1,0 +1,21 @@
+p {
+    align-content: center;
+    justify-content: center;
+    display: block;
+    padding: 30px;
+    color: white;
+    margin: 30px;
+    text-align: center;
+    font-size: 500%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-repeat: no-repeat;
+    align-content: center;
+    justify-content: center;
+    image-rendering: auto;
+    background-size: cover;
+    
+}
+
